@@ -1,0 +1,43 @@
+--Create a grocery store database
+
+CREATE TABLE surfboards (id INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, price INTEGER, quality TEXT);
+
+insert into surfboards values(1, "A", 5, 100, "good"); 
+insert into surfboards values(2, "B", 3, 450, "mint");
+insert into surfboards values(3, "C", 2, 200, "poor");
+insert into surfboards values(4, "D", 1, 320, "excellent");
+insert into surfboards values(5, "E", 5, 400, "poor");
+insert into surfboards values(6, "F", 9, 500, "excellent");
+insert into surfboards values(7, "G", 2, 460, "mint");
+insert into surfboards values(8, "H", 1, 700, "good");
+insert into surfboards values(9, "I", 4, 740, "mint");
+insert into surfboards values(10, "J", 2, 560, "excellent");
+insert into surfboards values(11, "K", 3, 540, "good");
+insert into surfboards values(12, "L", 1, 400, "poor");
+insert into surfboards values(13, "M", 2, 760, "excellent");
+insert into surfboards values(14, "N", 10, 400, "mint");
+insert into surfboards values(15, "O", 2, 120, "poor");
+
+--display the database ordered by price. 
+SELECT * FROM surfboards 
+ORDER BY price asc; 
+
+--what is the avg price of excellent surfboards? 
+SELECT AVG(price) "avg excellent surfboard price"
+FROM surfboards;
+
+--what are the 5 most excellent surfboards? 
+SELECT name, price, quality
+from surfboards
+order by quality asc
+limit 5;
+
+
+--Create a table of where the surfboards were made
+
+create table made(model text primary key, country text);
+insert into made values("A", "Hawaii"); 
+insert into made values("B", "USA"); 
+insert into made values("C", "Bali"); 
+insert into made values("D", "USA"); 
+insert into made values("E", "Hawaii");
