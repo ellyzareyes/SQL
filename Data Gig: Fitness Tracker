@@ -1,0 +1,52 @@
+/* Put your data in here and query it! */
+
+CREATE TABLE fitnesstracker (
+     Name TEXT PRIMARY KEY,
+     Gender TEXT, 
+     Age INTEGER,
+     Height TEXT,
+     Favorite_exercise TEXT, 
+     Starting_weight TEXT, 
+     Current_weight TEXT,
+     Years_experience INTEGER
+     );
+     
+
+INSERT INTO fitnesstracker (Name,Gender,Age,Height,Favorite_exercise,Starting_weight,Current_weight,Years_experience) VALUES ('Tiffany', 'Female', '23', '5''2', 'Squats', '110', '123', '3');
+INSERT INTO fitnesstracker (Name,Gender,Age,Height,Favorite_exercise,Starting_weight,Current_weight,Years_experience) VALUES ('Daniel', 'Male', '26', '6''1', 'Bench', '200', '190', '1');
+INSERT INTO fitnesstracker (Name,Gender,Age,Height,Favorite_exercise,Starting_weight,Current_weight,Years_experience) VALUES ('Michael', 'Male', '24', '6''3', 'Pull ups', '156', '190', '2'); 
+INSERT INTO fitnesstracker (Name,Gender,Age,Height,Favorite_exercise,Starting_weight,Current_weight,Years_experience) VALUES ('Lily', 'Female', '20', '5''2', 'Biceps', '130', '125', '4');
+INSERT INTO fitnesstracker (Name,Gender,Age,Height,Favorite_exercise,Starting_weight,Current_weight,Years_experience) VALUES ('Jasmine', 'Female', '25', '5''5', 'Hip Thrusts', '115', '125', '2');
+INSERT INTO fitnesstracker (Name,Gender,Age,Height,Favorite_exercise,Starting_weight,Current_weight,Years_experience) VALUES ('Cam', 'Male', '22', '5''6', 'Sprints', '130', '150', '2');
+INSERT INTO fitnesstracker (Name,Gender,Age,Height,Favorite_exercise,Starting_weight,Current_weight,Years_experience) VALUES ('Kai', 'Female', '21', '5''4', 'Abs', '135', '120', '5');
+INSERT INTO fitnesstracker (Name,Gender,Age,Height,Favorite_exercise,Starting_weight,Current_weight,Years_experience) VALUES ('Dylan', 'Male', '22', '6''0', 'Bench', '150', '190', '2');
+INSERT INTO fitnesstracker (Name,Gender,Age,Height,Favorite_exercise,Starting_weight,Current_weight,Years_experience) VALUES ('Dawn', 'Female', '23', '5''0', 'Dumbbell Row', '135', '126', '3');
+INSERT INTO fitnesstracker (Name,Gender,Age,Height,Favorite_exercise,Starting_weight,Current_weight,Years_experience) VALUES ('Nicholas', 'Male', '25', '5''7', 'Swimming', '140', '135', '3');
+INSERT INTO fitnesstracker (Name,Gender,Age,Height,Favorite_exercise,Starting_weight,Current_weight,Years_experience) VALUES ('Ashley', 'Female', '22', '5''3', 'Pilates', '125', '120', '6'); 
+INSERT INTO fitnesstracker (Name,Gender,Age, Height,Favorite_exercise,Starting_weight,Current_weight,Years_experience) VALUES ('Jeremy', 'Male', '28', '5''9', 'Running', '140', '135', '5');
+
+
+SELECT * FROM fitnesstracker;
+
+SELECT SUM(years_experience) FROM fitnesstracker;
+
+SELECT * FROM fitnesstracker 
+WHERE years_experience > 2
+AND starting_weight = "OG";
+
+SELECT name, 
+    CASE 
+        WHEN years_experience > 2 THEN "A"
+        WHEN years_experience >3 THEN "B" 
+        ELSE "C"
+    END AS "total_experience"
+FROM fitnesstracker; 
+
+SELECT COUNT(*), 
+    CASE 
+        WHEN years_experience > 2 THEN "A"
+        WHEN years_experience >3 THEN "B" 
+        ELSE "C"
+    END AS "total_experience"
+FROM fitnesstracker
+GROUP BY total_experience; 
