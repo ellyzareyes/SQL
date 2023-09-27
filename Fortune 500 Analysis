@@ -60,7 +60,7 @@ VALUES
 
 # Analysis: 
 
---assign industries that have the "high", "low", and "average" revenues
+--Assign industries that have the "high", "low", and "average" revenues
 SELECT industry, revenue,
 CASE WHEN revenue >= 400 THEN "high_revenues"
 WHEN revenue <= 200 THEN "low_revenues"
@@ -69,8 +69,19 @@ END AS industry_revenues
 FROM fortune_companies
 ORDER BY revenue asc;
 
---which industries has an average working employees of at least 500 people, what are their avg employees? 
+--Which industries has an average working employees of at least 500 people, what are their avg employees? 
 SELECT industry, AVG(employees) as avg_employees
 FROM fortune_companies
 GROUP BY industry
 HAVING avg_employees>=500;
+
+--Which companies have healthcare benefits *and* at least 15 paid time off days? 
+SELECT company_name
+FROM fortune_companies
+WHERE healthcare_benefits >=1
+AND paid_time_off_days >=15;
+
+--Which company in the "Healthcare" industry has the least revenue, and what's their revenue? 
+SELECT company_name, MIN(REVENUE)
+FROM fortune_companies
+WHERE industry = "Healthcare";
